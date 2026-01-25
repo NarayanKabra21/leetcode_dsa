@@ -78,7 +78,7 @@ Each solution is written with:
 ---
 
 ## Language Used
-- **Java** (Primary)
+- **Java**
 
 ---
 
