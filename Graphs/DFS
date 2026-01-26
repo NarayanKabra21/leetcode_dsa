@@ -2,16 +2,20 @@ import java.util.*;
 
 class Solution {
 
-    private void dfs(int node, boolean[] visited,
+    private void dfs(int u,
+                     boolean[] visited,
                      ArrayList<ArrayList<Integer>> adj,
                      ArrayList<Integer> result) {
 
-        visited[node] = true;
-        result.add(node);
+        visited[u] = true;      // mark source as visited
+        result.add(u);          // add source to result
 
-        for (int neighbor : adj.get(node)) {
-            if (!visited[neighbor]) {
-                dfs(neighbor, visited, adj, result);
+        // Traverse all neighbors of u
+        for (int i = 0; i < adj.get(u).size(); i++) {
+            int v = adj.get(u).get(i);   // visitor node
+
+            if (!visited[v]) {
+                dfs(v, visited, adj, result);
             }
         }
     }
@@ -21,7 +25,7 @@ class Solution {
         boolean[] visited = new boolean[V];
         ArrayList<Integer> result = new ArrayList<>();
 
-        // DFS starts from node 0
+        // Start DFS from node 0
         dfs(0, visited, adj, result);
 
         return result;
