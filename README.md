@@ -28,7 +28,13 @@ Each solution is written with:
 
 ---
 
-### Arrays
+
+### Maths
+
+
+---
+
+### HashMap
 
 ---
 
@@ -67,6 +73,18 @@ Each solution is written with:
 
 
 ---
+
+### Two Pointers
+
+
+---
+
+### Sorting
+
+
+---
+
+
 
 ## Notes
 
