@@ -1,0 +1,57 @@
+import java.util.*;
+
+class Solution {
+
+    // BFS function to detect cycle from a source node
+    private boolean bfs(int src,
+                        boolean[] visited,
+                        ArrayList<ArrayList<Integer>> adj) {
+
+        // Queue stores {node, parent}
+        Queue<int[]> q = new LinkedList<>();
+
+        q.add(new int[]{src, -1});
+        visited[src] = true;
+
+        while (!q.isEmpty()) {
+
+            int[] pair = q.poll();
+            int u = pair[0];       // current node
+            int parent = pair[1];  // parent of u
+
+            // Traverse neighbors
+            for (int i = 0; i < adj.get(u).size(); i++) {
+                int v = adj.get(u).get(i);
+
+                // If not visited, push to queue
+                if (!visited[v]) {
+                    visited[v] = true;
+                    q.add(new int[]{v, u});
+                }
+                // If visited and not parent → cycle
+                else if (v != parent) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    // Main function to check cycle
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+
+        boolean[] visited = new boolean[V];
+
+        // Handle disconnected graph
+        for (int i = 0; i < V; i++) {
+            if (!visited[i]) {
+                if (bfs(i, visited, adj)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
