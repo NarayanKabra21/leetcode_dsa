@@ -84,6 +84,11 @@ Each solution is written with:
 
 ---
 
+### Greedy
+
+
+---
+
 
 
 ## Notes
